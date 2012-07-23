@@ -372,4 +372,8 @@ Changes for each release.
 
 ### Version 0.0.0
 
- * Initial release of Node EC2 expanded to cover all services. 
+ * Build at Travis CI. #11.
+ * Specify region on the command line. #8.
+ * Specify service on the command line. #7.
+ * Map services to API versions. #6.
+ * Initial release of Node EC2 expanded to cover all services. #2.

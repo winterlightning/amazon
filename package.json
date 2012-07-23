@@ -8,4 +8,5 @@
 ,   "lib" : "lib"
 ,   "scripts" : { "test": "proof t/*/*.t" }
 ,   "engines" : { "node": "> 0.6.0" }
+,   "bin":              { "amazon": "./bin/amazon" }
 }
