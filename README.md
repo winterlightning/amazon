@@ -1,4 +1,4 @@
-# Node Amazon [![Build Status](https://secure.travis-ci.org/bigeasy/node-ec2.png?branch=master)](http://travis-ci.org/bigeasy/node-ec2)
+# Node Amazon [![Build Status](https://secure.travis-ci.org/bigeasy/amazon.png?branch=master)](http://travis-ci.org/bigeasy/amazon)
 
 Evented Node.js bindings to the Amaozn AWS Query API.
 

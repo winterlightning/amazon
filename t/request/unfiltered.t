@@ -3,7 +3,7 @@
 var configuration =
 { key: 'AKIAIBI7OMTXJHBKKPRA'
 , secret: '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'
-, endpoint: 'us-east-1'
+, region: 'us-east-1'
 , service: 'ec2'
 };
 
