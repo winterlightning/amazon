@@ -1,6 +1,7 @@
 var http = require("http")
-  , ResponseParser = require("./response").ResponseParser
-  , invoke = require("./request").invoke
+  , ResponseParser = require("./lib/response").ResponseParser
+  , invoke = require("./lib/request").invoke
+  , endpoints = require("./lib/endpoints")
   , __slice = Array.prototype.slice;
   ;
 
@@ -8,6 +9,7 @@ function amazon (options, vargs) {
   var callback
     , endpoint
     , extended
+    , version
     , key
     , name
     , parameters
@@ -15,6 +17,7 @@ function amazon (options, vargs) {
     , set
     , value
     , extensions
+    , host
     ;
 
   extended = options;
@@ -49,8 +52,16 @@ function amazon (options, vargs) {
       };
     case 3:
     case 4:
-      endpoint = options.endpoint, key = options.key, secret = options.secret;
-      invoke(endpoint, key, secret, name, parameters, function(error, response, body) {
+      service = options.service, endpoint = options.region, key = options.key, secret = options.secret;
+      if (endpoint == '') {
+        host = options.service + '.amazonaws.com'  
+      } else if (service == 's3') {
+        host = options.service + '-' + endpoint + '.amazonaws.com'  
+      } else {
+        host = options.service + '.' + endpoint + '.amazonaws.com'  
+      }
+      version = endpoints.service.version[service]
+      invoke(host, version, key, secret, name, parameters, function(error, response, body) {
         var statusCode;
         if (error) {
           callback(error);
