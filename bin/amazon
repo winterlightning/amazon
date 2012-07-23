@@ -2,19 +2,55 @@
 
 var configuration, display, file, format, labels, $, rest, _ref;
 
+var slice = [].slice;
+
+function die () {
+  console.log.apply(console, slice.call(arguments, 0));
+  return process.exit(1);
+}
+
+function say () { return console.log.apply(console, slice.call(arguments, 0)) }
+
 var fs = require("fs")
-  , ec2 = require("ec2")
+  , amazon = require("..")
   , argv = process.argv.slice(2)
-  , command = argv.shift()
+  , command
+  , endpoints = require('../lib/endpoints')
+  , region
   , parameters = {}
+  , service = 'ec2'
   , key
   ;
 
-while (argv.length) {
-  key = argv.shift();
-  if ($ = /^\s*\+(.*)/.exec(key)) format = $[1];
-  else parameters[key] = argv.shift();
+function parseArguments () {
+  var candidates;
+  while (argv.length) {
+    if (argv[0][0].toUpperCase() == argv[0][0]) break;
+    if (endpoints.service.regions[argv[0]]) {
+      service = argv.shift();
+    } else {
+      candidates = endpoints.regions.filter(function (region) { return !region.indexOf(argv[0]) });
+      if (candidates.length == 1) {
+        region = candidates.pop();
+        argv.shift();
+      } else if (candidates.length) {
+        throw new Error('ambiguous region: ' + argv[0]);
+      } else {
+        throw new Error('invalid argument: ' + argv[0]);
+      }
+    }
+  }
+
+  command = argv.shift();
+
+  while (argv.length) {
+    key = argv.shift();
+    if ($ = /^\s*\+(.*)/.exec(key)) format = $[1];
+    else parameters[key] = argv.shift();
+  }
 }
+
+parseArguments();
 
 function build (fields, child) {
   return function(lines, line, context) {
@@ -78,9 +114,19 @@ if (format) {
 file = process.env["AWS_CONFIG"] || ("" + process.env["HOME"] + "/.aws");
 configuration = JSON.parse(fs.readFileSync(file, "utf8"));
 
-ec2 = ec2(configuration);
+if (region == null) {
+  if (!~endpoints.regions.indexOf(configuration.region)) {
+    configuration.region = '';
+  }
+} else {
+  configuration.region = region;
+}
 
-ec2(command, parameters, response);
+configuration.service = service;
+
+amazon = amazon(configuration);
+
+amazon(command, parameters, response);
 
 function response (error, response) {
   var line, lines, i, I, results;

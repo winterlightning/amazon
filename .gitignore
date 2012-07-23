@@ -1,6 +1,4 @@
 .AppleDouble
 .DS_Store
+node_modules/*
 .proof.out
-node_modules
-site
-t
