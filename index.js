@@ -1,5 +1,5 @@
 var http = require("http")
-  , ResponseParser = require("./lib/response").ResponseParser
+  , parse = require("./lib/response").parse
   , invoke = require("./lib/request").invoke
   , endpoints = require("./lib/endpoints")
   , __slice = Array.prototype.slice;
@@ -18,6 +18,8 @@ function amazon (options, vargs) {
     , value
     , extensions
     , host
+    , service
+    , i, I
     ;
 
   extended = options;
@@ -68,9 +70,9 @@ function amazon (options, vargs) {
         } else {
           statusCode = Math.floor(response.statusCode / 100);
           if (statusCode === 2) {
-            (new ResponseParser).read(body, callback);
+            parse(body, callback);
           } else if (body) {
-            (new ResponseParser).read(body, function(error, object) {
+            parse(body, function(error, object) {
               if (error) {
                 callback(new Error(http.STATUS_CODES[response.statusCode]));
               } else {

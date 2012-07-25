@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("CancelSpotInstanceRequests", callback("object"));
+  parse("CancelSpotInstanceRequests", callback);
 }, function (object, deepEqual) {
   var expected =
   { requestId: "59dbff89-35bd-4eac-99ed-be587ed81825"

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("CreateSpotDatafeedSubscription", callback("object"));
+  parse("CreateSpotDatafeedSubscription", callback);
 }, function (object, deepEqual) {
   var expected =
   { spotDatafeedSubscription: 

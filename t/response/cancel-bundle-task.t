@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("CancelBundleTask", callback("object"));
+  parse("CancelBundleTask", callback);
 }, function (object, deepEqual) {
   var expected =
   { bundleInstanceTask:
