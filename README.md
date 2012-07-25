@@ -134,26 +134,26 @@ The service identifiers are one of the following.
  * `cloudfront` &mdash; [Amazon CloudFront](http://aws.amazon.com/documentation/cloudfront/).
  * `monitoring` &mdash; [Amazon CloudWatch](http://aws.amazon.com/documentation/cloudwatch/).
  * `is` &mdash; [Amazon DevPay](http://aws.amazon.com/documentation/devpay/).
- * dynamodb` [Amazon DynamoDB](http://aws.amazon.com/documentation/dynamodb/).
- * `ec2` [Amazon Elastic Compute Cloud (EC2)](http://aws.amazon.com/documentation/ec2/).
- * `elasticmapreduce` [Amazon Elastic MapReduce](http://aws.amazon.com/documentation/elasticmapreduce/).
- * `elasticache` [Amazon ElastiCache](http://aws.amazon.com/documentation/elasticache/).
- * `fps` [Amazon Flexible Payments Service (FPS and ASP)](http://aws.amazon.com/documentation/fps/).
- * `mechanicalturk` [Amazon Mechanical Turk](http://aws.amazon.com/documentation/mturk/).
- * `rds` [Amazon Relational Database Service (RDS)](http://aws.amazon.com/documentation/rds/).
- * `route53` [Amazon Route 53](http://aws.amazon.com/documentation/route53/).
- * `email` [Amazon Simple Email Service (SES)](http://aws.amazon.com/documentation/ses/).
- * `sdb` [Amazon SimpleDB](http://aws.amazon.com/documentation/simpledb/).
- * `sns` [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/documentation/sns/).
- * `sqs` [Amazon Simple Queue Service (SQS)](http://aws.amazon.com/documentation/sqs/).
- * `s3` [Amazon Simple Storage Service (S3)](http://aws.amazon.com/documentation/s3/).
- * `autoscaling` [Auto Scaling](http://aws.amazon.com/documentation/autoscaling/).
- * `elasticbeanstalk` [AWS Elastic Beanstalk](http://aws.amazon.com/documentation/elasticbeanstalk/).
- * `iam` [AWS Identity and Access Management (IAM)](http://aws.amazon.com/documentation/iam/).
- * `importexport` [AWS Import/Export](http://aws.amazon.com/documentation/importexport/).
- * `sts` [AWS Security Token Service](http://aws.amazon.com/documentation/iam/).
- * `storagegateway` [AWS Storage Gateway](http://aws.amazon.com/documentation/storagegateway/).
- * `elasticloadbalancing` [Elastic Load Balancing](http://aws.amazon.com/documentation/elasticloadbalancing/).
+ * `dynamodb` &mdash; [Amazon DynamoDB](http://aws.amazon.com/documentation/dynamodb/).
+ * `ec2` &mdash; [Amazon Elastic Compute Cloud (EC2)](http://aws.amazon.com/documentation/ec2/).
+ * `elasticmapreduce` &mdash; [Amazon Elastic MapReduce](http://aws.amazon.com/documentation/elasticmapreduce/).
+ * `elasticache` &mdash; [Amazon ElastiCache](http://aws.amazon.com/documentation/elasticache/).
+ * `fps` &mdash; [Amazon Flexible Payments Service (FPS and ASP)](http://aws.amazon.com/documentation/fps/).
+ * `mechanicalturk` &mdash; [Amazon Mechanical Turk](http://aws.amazon.com/documentation/mturk/).
+ * `rds` &mdash; [Amazon Relational Database Service (RDS)](http://aws.amazon.com/documentation/rds/).
+ * `route53` &mdash; [Amazon Route 53](http://aws.amazon.com/documentation/route53/).
+ * `email` &mdash; [Amazon Simple Email Service (SES)](http://aws.amazon.com/documentation/ses/).
+ * `sdb` &mdash; [Amazon SimpleDB](http://aws.amazon.com/documentation/simpledb/).
+ * `sns` &mdash; [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/documentation/sns/).
+ * `sqs` &mdash; [Amazon Simple Queue Service (SQS)](http://aws.amazon.com/documentation/sqs/).
+ * `s3` &mdash; [Amazon Simple Storage Service (S3)](http://aws.amazon.com/documentation/s3/).
+ * `autoscaling` &mdash; [Auto Scaling](http://aws.amazon.com/documentation/autoscaling/).
+ * `elasticbeanstalk` &mdash; [AWS Elastic Beanstalk](http://aws.amazon.com/documentation/elasticbeanstalk/).
+ * `iam` &mdash; [AWS Identity and Access Management (IAM)](http://aws.amazon.com/documentation/iam/).
+ * `importexport` &mdash; [AWS Import/Export](http://aws.amazon.com/documentation/importexport/).
+ * `sts` &mdash; [AWS Security Token Service](http://aws.amazon.com/documentation/iam/).
+ * `storagegateway` &mdash; [AWS Storage Gateway](http://aws.amazon.com/documentation/storagegateway/).
+ * `elasticloadbalancing` &mdash; [Elastic Load Balancing](http://aws.amazon.com/documentation/elasticloadbalancing/).
 
 The region identifiers are one of the following.
 
