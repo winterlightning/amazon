@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("CreateSnapshot", callback("object"));
+  parse("CreateSnapshot", callback);
 }, function (object, deepEqual) {
   var expected =
   { snapshotId: "snap-78a54011"
