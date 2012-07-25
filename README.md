@@ -372,6 +372,8 @@ Changes for each release.
 
 ### Version 0.0.1
 
+ * Upgrade to Proof 0.0.15. #13.
+ * Convert response parser to `jindw/xmldom`. #4.
  * Add code style to service identifiers in `README.md`. #14.
  * Tidy `request.js`. #19.
 
