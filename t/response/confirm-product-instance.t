@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("ConfirmProductInstance", callback("object"));
+  parse("ConfirmProductInstance", callback);
 }, function (object, deepEqual) {
   var expected =
   { ownerId: "254933287430"

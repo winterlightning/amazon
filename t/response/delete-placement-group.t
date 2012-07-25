@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("DeletePlacementGroup", callback("object"));
+  parse("DeletePlacementGroup", callback);
 }, function (object, deepEqual) {
   var expected =
   { requestId: "d4904fd9-82c2-4ea5-adfe-a9cc3EXAMPLE"

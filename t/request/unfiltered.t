@@ -9,7 +9,7 @@ var configuration =
 
 require('proof')(1, function (callback) {
   var ec2 = require('../..')(configuration);
-  ec2('DescribeRegions', {}, callback('object'));
+  ec2('DescribeRegions', {}, callback);
 }, function (object, equal) {
   equal(object.regionInfo.filter(function (info) { return info.regionName == 'us-east-1' }).length, 1, 'request');
 });
