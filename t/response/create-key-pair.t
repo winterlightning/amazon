@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("CreateKeyPair", callback("object"));
+  parse("CreateKeyPair", callback);
 }, function (object, deepEqual) {
   var expected =
   { keyName: "gsg-keypair"

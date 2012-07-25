@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("CreateVolume", callback("object"));
+  parse("CreateVolume", callback);
 }, function (object, deepEqual) {
   var expected =
   { volumeId: "vol-4d826724"

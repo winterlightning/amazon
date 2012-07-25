@@ -3,8 +3,8 @@
 ,   "keywords" :        ["aws", "ec2", "amazon"]
 ,   "version":          "0.0.0"
 ,   "author":           "Alan Gutierrez <alan@prettyrobots.com>"
-,   "dependencies":     { "node-xml": ">=1.0.0" }
-,   "devDependencies":  { "proof": "0.0.8" }
+,   "dependencies":     { "xmldom": "0.1.11" }
+,   "devDependencies":  { "proof": "0.0.15" }
 ,   "scripts" :         { "test": "proof t/*/*.t" }
 ,   "engines" :         { "node": "> 0.6.0" }
 ,   "bin":              { "amazon": "./bin/amazon" }

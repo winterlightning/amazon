@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require("./proof")(1, function (parse, callback) {
-  parse("BundleInstance", callback("object"));
+  parse("BundleInstance", callback);
 }, function (object, deepEqual) {
   var expected =
   { requestId: "bun-c1a540a8"

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-require("./proof")(1, function (parse, callback) {
-  parse("Errors", callback("object"));
+require("./proof")(1, function (parse, async) {
+  parse("Errors", async());
 }, function (object, deepEqual) {
   var expected =
   { Errors: [ { Code: 'MissingParameter', Message: 'The request must contain the parameter MinCount' } ]
