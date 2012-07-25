@@ -130,30 +130,30 @@ Options to the `amazon` function are:
 
 The service identifiers are one of the following.
 
- * cloudformation &mdash; [AWS CloudFormation](http://aws.amazon.com/documentation/cloudformation/).
- * cloudfront &mdash; [Amazon CloudFront](http://aws.amazon.com/documentation/cloudfront/).
- * monitoring: &mdash; [Amazon CloudWatch](http://aws.amazon.com/documentation/cloudwatch/).
- * is: &mdash; [Amazon DevPay](http://aws.amazon.com/documentation/devpay/).
- * dynamodb: [Amazon DynamoDB](http://aws.amazon.com/documentation/dynamodb/).
- * ec2: [Amazon Elastic Compute Cloud (EC2)](http://aws.amazon.com/documentation/ec2/).
- * elasticmapreduce: [Amazon Elastic MapReduce](http://aws.amazon.com/documentation/elasticmapreduce/).
- * elasticache: [Amazon ElastiCache](http://aws.amazon.com/documentation/elasticache/).
- * fps: [Amazon Flexible Payments Service (FPS and ASP)](http://aws.amazon.com/documentation/fps/).
- * mechanicalturk: [Amazon Mechanical Turk](http://aws.amazon.com/documentation/mturk/).
- * rds: [Amazon Relational Database Service (RDS)](http://aws.amazon.com/documentation/rds/).
- * route53: [Amazon Route 53](http://aws.amazon.com/documentation/route53/).
- * email: [Amazon Simple Email Service (SES)](http://aws.amazon.com/documentation/ses/).
- * sdb: [Amazon SimpleDB](http://aws.amazon.com/documentation/simpledb/).
- * sns: [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/documentation/sns/).
- * sqs: [Amazon Simple Queue Service (SQS)](http://aws.amazon.com/documentation/sqs/).
- * s3: [Amazon Simple Storage Service (S3)](http://aws.amazon.com/documentation/s3/).
- * autoscaling: [Auto Scaling](http://aws.amazon.com/documentation/autoscaling/).
- * elasticbeanstalk: [AWS Elastic Beanstalk](http://aws.amazon.com/documentation/elasticbeanstalk/).
- * iam: [AWS Identity and Access Management (IAM)](http://aws.amazon.com/documentation/iam/).
- * importexport: [AWS Import/Export](http://aws.amazon.com/documentation/importexport/).
- * sts: [AWS Security Token Service](http://aws.amazon.com/documentation/iam/).
- * storagegateway: [AWS Storage Gateway](http://aws.amazon.com/documentation/storagegateway/).
- * elasticloadbalancing: [Elastic Load Balancing](http://aws.amazon.com/documentation/elasticloadbalancing/).
+ * `cloudformation` &mdash; [AWS CloudFormation](http://aws.amazon.com/documentation/cloudformation/).
+ * `cloudfront` &mdash; [Amazon CloudFront](http://aws.amazon.com/documentation/cloudfront/).
+ * `monitoring` &mdash; [Amazon CloudWatch](http://aws.amazon.com/documentation/cloudwatch/).
+ * `is` &mdash; [Amazon DevPay](http://aws.amazon.com/documentation/devpay/).
+ * dynamodb` [Amazon DynamoDB](http://aws.amazon.com/documentation/dynamodb/).
+ * `ec2` [Amazon Elastic Compute Cloud (EC2)](http://aws.amazon.com/documentation/ec2/).
+ * `elasticmapreduce` [Amazon Elastic MapReduce](http://aws.amazon.com/documentation/elasticmapreduce/).
+ * `elasticache` [Amazon ElastiCache](http://aws.amazon.com/documentation/elasticache/).
+ * `fps` [Amazon Flexible Payments Service (FPS and ASP)](http://aws.amazon.com/documentation/fps/).
+ * `mechanicalturk` [Amazon Mechanical Turk](http://aws.amazon.com/documentation/mturk/).
+ * `rds` [Amazon Relational Database Service (RDS)](http://aws.amazon.com/documentation/rds/).
+ * `route53` [Amazon Route 53](http://aws.amazon.com/documentation/route53/).
+ * `email` [Amazon Simple Email Service (SES)](http://aws.amazon.com/documentation/ses/).
+ * `sdb` [Amazon SimpleDB](http://aws.amazon.com/documentation/simpledb/).
+ * `sns` [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/documentation/sns/).
+ * `sqs` [Amazon Simple Queue Service (SQS)](http://aws.amazon.com/documentation/sqs/).
+ * `s3` [Amazon Simple Storage Service (S3)](http://aws.amazon.com/documentation/s3/).
+ * `autoscaling` [Auto Scaling](http://aws.amazon.com/documentation/autoscaling/).
+ * `elasticbeanstalk` [AWS Elastic Beanstalk](http://aws.amazon.com/documentation/elasticbeanstalk/).
+ * `iam` [AWS Identity and Access Management (IAM)](http://aws.amazon.com/documentation/iam/).
+ * `importexport` [AWS Import/Export](http://aws.amazon.com/documentation/importexport/).
+ * `sts` [AWS Security Token Service](http://aws.amazon.com/documentation/iam/).
+ * `storagegateway` [AWS Storage Gateway](http://aws.amazon.com/documentation/storagegateway/).
+ * `elasticloadbalancing` [Elastic Load Balancing](http://aws.amazon.com/documentation/elasticloadbalancing/).
 
 The region identifiers are one of the following.
 
@@ -369,6 +369,11 @@ $ amazon ec2 RunInstances ImageId ami-08d97e61 KeyName launch_key MinCount 1 Max
 ## Change Log
 
 Changes for each release.
+
+### Version 0.0.1
+
+ * Add code style to service identifiers in `README.md`. #14.
+ * Tidy `request.js`. #19.
 
 ### Version 0.0.0
 
