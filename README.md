@@ -372,6 +372,11 @@ Changes for each release.
 
 ### Version 0.0.1
 
+ * Implement DynamoDB. #18.
+ * Implement Simple Email Service. #15.
+ * Implement Signature Version 2 Signing Process. #22.
+ * Implement Signature Version 3 Signing Process (HTTPS). #21.
+ * Implement Signature Version 4 Signing Process. #20.
  * Upgrade to Proof 0.0.15. #13.
  * Convert response parser to `jindw/xmldom`. #4.
  * Add code style to service identifiers in `README.md`. #14.
