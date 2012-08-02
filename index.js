@@ -1,6 +1,5 @@
-var http = require("http")
+var http = require('https')
   , parse = require("./lib/response").parse
-  , invoke = require("./lib/request").invoke
   , endpoints = require("./lib/endpoints")
   , __slice = Array.prototype.slice;
   ;
@@ -31,8 +30,7 @@ function amazon (options, vargs) {
       for (i = 0, I = extensions.length; i < I; i++) {
         set = extensions[i];
         for (key in set) {
-          value = set[key];
-          extended[key] = value;
+          extended[key] = set[key];
         }
       }
   }
@@ -54,25 +52,131 @@ function amazon (options, vargs) {
       };
     case 3:
     case 4:
-      service = options.service, endpoint = options.region, key = options.key, secret = options.secret;
-      if (endpoint == '') {
-        host = options.service + '.amazonaws.com'  
-      } else if (service == 's3') {
-        host = options.service + '-' + endpoint + '.amazonaws.com'  
-      } else {
-        host = options.service + '.' + endpoint + '.amazonaws.com'  
+      invoke(options, name, parameters, callback);
+  }
+};
+
+var signature = require('./lib/signature')
+  , enc = signature.enc
+  ;
+
+function postJSON (host, action, query) {
+  var post =
+  { request:
+    { port: 443
+    , host: host
+    , method: 'POST'
+    , path: '/'
+    , headers:
+      { host: host
+      , 'content-type': 'application/x-amz-json-1.0'
       }
-      version = endpoints.service.version[service]
-      invoke(host, version, key, secret, name, parameters, function(error, response, body) {
-        var statusCode;
+    }
+  , body: JSON.stringify(query)
+  };
+  return post;
+}
+
+function getQuery (host, action, query) {
+  var qs = Object.keys(query)
+                 .map(function (key) { return enc(key) + '=' + enc(query[key]) })
+                 .join('&')
+    , get =
+      { request:
+        { port: 443
+        , host: host
+        , method: 'GET'
+        , path: '/?' + qs
+        , headers: { host: host }
+        }
+      , body: ''
+      };
+  return get;
+}
+
+function postHTTPS (host, action, query) {
+  var qs, post;
+  qs = Object.keys(query)
+             .map(function (key) { return enc(key) + '=' + enc(query[key]) });
+  qs.push('Action=' + enc(action));
+  qs = qs.join('&');
+  post =
+  { request:
+    { port: 443
+    , host: host
+    , method: 'POST'
+    , path: '/'
+    , headers:
+      { host: host
+      , 'content-type': 'application/x-www-form-urlencoded'
+      }
+    }
+  , body: qs
+  };
+  return post;
+}
+
+const VERSION2GETTER =
+{ pack: getQuery
+, sign: signature.version2
+, parse: parse
+};
+
+const VERSION3POSTER =
+{ pack: postHTTPS
+, sign: signature.version3https
+, parse: parse
+};
+
+const VERSION4POSTER =
+{ pack: postJSON
+, sign: signature.version4
+, parse: function (body, callback) { callback(null, JSON.parse(body)) }
+};
+
+const PROTOCOL =
+{ ec2: VERSION2GETTER
+, dynamodb: VERSION4POSTER
+, email: VERSION3POSTER
+};
+
+function invoke (conf, action, parameters, callback) {
+  var service = conf.service
+    , region = conf.region
+    , protocol = PROTOCOL[service]
+    , host, packed, signed, request
+    ;
+
+  if (region == '') {
+    host = options.service + '.amazonaws.com'  
+  } else if (service == 's3') {
+    host = conf.service + '-' + region + '.amazonaws.com'  
+  } else {
+    host = conf.service + '.' + region + '.amazonaws.com'  
+  }
+
+  packed = protocol.pack(host, action, parameters);
+  signed = protocol.sign(conf, action, packed.request, packed.body);
+
+  request = http.request(signed, function(response) {
+    var body = [];
+
+    response.setEncoding('utf8');
+    response.on('data', function(chunk) { body.push(chunk) });
+    response.on('end', function() { complete() });
+    response.once('error', complete);
+
+    function complete (error) {
+      var statusCode;
+      try {
         if (error) {
           callback(error);
         } else {
           statusCode = Math.floor(response.statusCode / 100);
           if (statusCode === 2) {
-            parse(body, callback);
-          } else if (body) {
-            parse(body, function(error, object) {
+            protocol.parse(body.join(''), callback);
+          } else if (body.length) {
+            protocol.parse(body.join(''), function(error, object) {
               if (error) {
                 callback(new Error(http.STATUS_CODES[response.statusCode]));
               } else {
@@ -86,8 +190,13 @@ function amazon (options, vargs) {
             callback(new Error(http.STATUS_CODES[response.statusCode]));
           }
         }
-      });
-  }
-};
+      } catch (error) {
+        callback(error);
+      }
+    }
+  });
+  request.once('error', callback);
+  request.end(packed.body);
+}
 
 module.exports = amazon({}, [{}]);
